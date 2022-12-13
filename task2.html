@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Meter Task</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+    <body>
+        
+            <header class="bg-light fs-4 text-center py-3 fw-bold text-secondary">Color Meter</header>
+            <div style="width: 70%;" class="container mx-auto mt-4">
+
+            <!-- Red color -->
+            <div class="row">
+                <label class="col-4 text-danger fw-bold fs-5">Red</label>
+                <input class="col-8 form-range" type="range" id="redRange" min="0" max="255">
+            </div>
+            <!-- Green color -->
+            <div class="row mt-3">
+                <label class="col-4 text-success fw-bold fs-5">Green</label>
+                <input class="col-8 form-range" type="range" id="greenRange" min="0" max="255">
+            </div>
+            <!-- Blue color -->
+            <div class="row mt-3">
+                <label class="col-4 text-primary fw-bold fs-5">Blue</label>
+                <input class="col-8 form-range" type="range" id="blueRange" min="0" max="255">
+
+            </div>
+            <button class="btn btn-dark mt-5" id="changeBtn">Change</button>
+
+        </div>
+        <script>
+            let redRange = document.getElementById('redRange');
+            let greenRange = document.getElementById('greenRange');
+            let blueRange = document.getElementById('blueRange');
+            let changeBtn = document.getElementById('changeBtn');
+            
+            changeBtn.addEventListener('click', ()=>{
+                document.body.style.backgroundColor = `rgb(${redRange.value}, ${greenRange.value}, ${blueRange.value})`;
+
+            });
+        </script>
+    </body>
+
+</html>

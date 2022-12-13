@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>Video Controls</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+    <body>
+        <header>
+            <p class="text-center fs-3 bg-light py-4 text-secondary fw-bold">Video Control Task</p>
+        </header>
+
+                <div style="width: 70%;" class="container mx-auto row">
+                    <video class="col-12 mx-auto" src="media/frozen.mp4" id="vid1" poster="media/olaf-in-frozen-2-2y-2560x1600.jpg"></video>
+                    <input class="col-6 mx-auto form-range" type="range" id="vidRange" min="0" step="0.01"> 
+                    <div class="col-12">
+                    <div class=" row pb-5 mb-5">
+                        <button class="btn btn-primary col-1 me-3" id="playBtn">Play</button>
+                        <button class="btn btn-danger col-1 me-3" id="stopBtn">Stop</button>
+                        <button class="btn btn-secondary col-1 me-3" id="returnBack"><<</button>
+                        <button class="btn btn-secondary col-1 me-3" id="minusFive"><</button>
+                        <button class="btn btn-secondary col-1 me-3" id="addFive">></button>
+                        <button class="btn btn-secondary col-1" id="endBtn">>></button>
+                        <input class="col-2 mx-auto" type="range" id="volRange" min="0" step="0.01" max="1">
+                        <button class="btn btn-outline-dark col-2 text-center" id="muteBtn">Mute</button>
+                    </div>
+                    </div>
+                </div> 
+                <script>
+                    let vid = document.getElementById('vid1');
+                    let startVid = document.getElementById('playBtn');
+                    let pauseVid = document.getElementById('stopBtn');
+                    let returnBack = document.getElementById('returnBack');
+                    let returnFive = document.getElementById('minusFive');
+                    let addFive = document.getElementById('addFive');
+                    let endBtn = document.getElementById('endBtn');
+                    let muteBtn = document.getElementById('muteBtn');
+                    let volRange = document.getElementById('volRange');
+                    let vidRange = document.getElementById('vidRange');
+
+                    let playVid = () => vid.currentTime == vid.duration ? stopVid() : vid.play();
+
+                    let stopVid = () => vid.currentTime == vid.duration ? (vid.currentTime = 0, vid.play()) : vid.pause();
+                    
+                    let vidReturn = () => vid.currentTime = 0;
+                    
+                    let vidBackward = () => vid.currentTime < 10 ? vid.currentTime = 0 : vid.currentTime -= 10;  
+
+                    let vidForward = () => vid.currentTime == vid.duration ? vid.currentTime : vid.currentTime += 10;
+                    let vidEnd = () => vid.currentTime = vid.duration;
+                    let vidMute = () => {
+                        if(muteBtn.innerHTML == 'Mute'){
+                        vid.volume = 0;
+                        muteBtn.innerHTML = 'Unmute';
+                        }else if(muteBtn.innerHTML == 'Unmute'){
+                            vid.volume = volRange.value;
+                            muteBtn.innerHTML = 'Mute';
+                        }
+                    }
+                   
+
+
+                    startVid.addEventListener('click', playVid);
+                    pauseVid.addEventListener('click', stopVid);
+                    returnBack.addEventListener('click', vidReturn);
+                    returnFive.addEventListener('click', vidBackward);
+                    addFive.addEventListener('click', vidForward);
+                    endBtn.addEventListener('click', vidEnd);
+                    muteBtn.addEventListener('click', vidMute);
+                    volRange.addEventListener('change', ()=>{
+                        vid.volume = volRange.value;
+                    });
+                    vidRange.addEventListener('change', ()=>{
+                        vid.currentTime = vidRange.value;
+                    });
+
+                    // get video duration
+                    vid.onloadedmetadata = function() {
+                    console.log('metadata loaded!');
+                    console.log(this.duration);
+                    }
+
+                    
+                
+                    
+                </script>
+    </body>
+</html>
