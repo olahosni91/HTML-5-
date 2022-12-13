@@ -45,7 +45,7 @@
                     let vidBackward = () => vid.currentTime < 10 ? vid.currentTime = 0 : vid.currentTime -= 10;  
 
                     let vidForward = () => vid.currentTime == vid.duration ? vid.currentTime : vid.currentTime += 10;
-                    let vidEnd = () => vid.currentTime = vid.duration;
+                    let vidEnd = () => vid.currentTime = vid.duration-0.1;
                     let vidMute = () => {
                         if(muteBtn.innerHTML == 'Mute'){
                         vid.volume = 0;
