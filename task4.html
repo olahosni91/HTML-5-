@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Animation</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+    <body>
+        <header class="bg-light text-secondary py-4 fw-bold fs-4 text-center">Canvas</header>
+        <div class="container mt-4">
+        <canvas width="400" height="400" style="border:2px solid orange" id="canv"></canvas>
+        </div>
+
+       <script>
+      let canvasLine = () => {
+    //   let id = null;
+      var canv =  document.getElementById("canv");
+      
+    //   clearInterval(id);
+        var ctx = canv.getContext("2d");
+        let x = y = 0;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        let inter = setInterval(draw, 1000);
+        function draw(){
+            x += 20;
+            y += 20;
+            ctx.lineTo(x, y);
+            ctx.strokeStyle = "red";
+            ctx.lineWidth = 5;
+            ctx.stroke();
+            if(x > canv.width && y > canv.height){
+                alert('Animation End');
+                clearInterval(inter);
+            }
+            
+
+        }
+        
+        // ctx.lineTo(x, y);
+        
+        ctx.closePath();
+
+      } 
+    //   pos = ctx.lineTo(150,150);
+    //   setInterval(lineAnimation, 2);
+      
+    canvasLine();
+    
+
+      
+
+       </script>
+    </body>
+</html>

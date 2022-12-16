@@ -55,9 +55,6 @@
                             muteBtn.innerHTML = 'Mute';
                         }
                     }
-                   
-
-
                     startVid.addEventListener('click', playVid);
                     pauseVid.addEventListener('click', stopVid);
                     returnBack.addEventListener('click', vidReturn);
@@ -68,15 +65,14 @@
                     volRange.addEventListener('change', ()=>{
                         vid.volume = volRange.value;
                     });
-                    vidRange.addEventListener('change', ()=>{
-                        vid.currentTime = vidRange.value;
-                    });
+                    vidRange.addEventListener('click', () => vid.currentTime = vidRange.value);
 
-                    // get video duration
-                    vid.onloadedmetadata = function() {
-                    console.log('metadata loaded!');
-                    console.log(this.duration);
-                    }
+                    vid.addEventListener('timeupdate', ()=> vidRange.value = vid.currentTime);
+
+                    // vid.onloadedmetadata = function() {
+                    // console.log('metadata loaded!');
+                    // console.log(this.duration);
+                    // }
 
                     
                 

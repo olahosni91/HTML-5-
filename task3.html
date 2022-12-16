@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Triangle</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+    <body>
+        <header class="bg-light text-secondary fs-3 text-center py-4 fw-bold">Triangle</header>
+
+        <div class="container">
+        <svg height="400" width="400" class="mt-4 border border-danger">
+            <text class="fw-bold" x="110" y="240" fill="black">c</text>
+            <text class="fw-bold" x="150" y="320" fill="black">a</text>
+            <text class="fw-bold" x="230" y="240" fill="black">b</text>
+
+            <polygon points="200,130 100,300 200,300" style="fill:red;" />
+            
+        </svg>
+        <p class="fs-4 mt-3 fw-bold">According to pythagoras theorem</p>
+        <div class="d-block text-danger">
+    <math display="inline">
+        <mi>c</mi><mo>=</mo>
+          <msqrt>
+            <msup>
+                <mi>a</mi>
+                <mn>2</mn>
+            </msup>
+            <mo>+</mo>
+            <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+            </msup>
+          </msqrt>
+      </math>
+      </div>
+      </div>
+     
+
+        <script>
+            window.MathJax = {
+              MathML: { extensions: ["mml3.js", "content-mathml.js"] },
+            };
+          </script>
+          <script
+          type="text/javascript"
+          async
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=MML_HTMLorMML"
+        ></script>
+    </body>
+</html>
